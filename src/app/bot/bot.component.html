@@ -1,0 +1,58 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <img src="../../assets/legoman.jpg" class="img-man">
+    </div>
+    <div class="col-sm">
+        <div class="speech-bubble">
+          <br>
+          HALO!
+          <br><br>
+          Please let me know what you're looking for, and I'll see what I can do...
+          <br><br>
+          
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-sm">
+      <div class="speech-bubble-right">
+        <br><br>
+        <input type="text" [(ngModel)]="search" name="search" placeholder="I'm looking for..." style="width:80%; text-align: center;">
+        <button (click)="sendQuery(search)">?</button>
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-sm">
+      <div *ngIf="numFound" class="speech-bubble"><br><br>
+        I found {{numFound}} documents.... Let me show you the names;<br><br>
+        <div *ngIf="numFound > 10">
+          <p>Because I found more than 10 results, I will show you the top 10..</p>
+        </div>
+        <div *ngFor="let i of result">
+          <div class="card-mb-3">
+            <img src="../../assets/document.png" class="img-doc card-img-top">
+            <div class="card-body">
+              {{replaceName(i)}}
+            </div>
+            <br><br>
+          </div>
+        </div>
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <div *ngIf="!numFound && submitted" class="speech-bubble">
+        <br><br>
+        Sorry; I didn't find any documents that matched your input...
+        <br><br><br>
+      </div>
+    </div>
+  </div>
+</div>
